@@ -1,7 +1,22 @@
-import React from "react";
+"use client";
 
-function Home() {
-  return <div>안녕</div>;
+import React from "react";
+import styled from "styled-components";
+import Header from "./components/Header";
+
+function Page() {
+  return (
+    <PageContainer>
+      <Header />
+      안녕
+    </PageContainer>
+  );
 }
 
-export default Home;
+export default Page;
+
+const PageContainer = styled.div`
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+`;
