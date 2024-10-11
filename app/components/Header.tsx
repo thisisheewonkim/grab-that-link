@@ -17,5 +17,5 @@ export default Header;
 
 const PageHeader = styled.header`
   width: 100%;
-  padding: 16px;
+  padding: 20px 16px;
 `;
