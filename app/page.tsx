@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import Biography from "./components/Biography";
 import LinkButton from "./components/LinkButton";
+import { linkBtnData } from "./constants/linkButtonData";
+import Copyright from "./components/Copyright";
 
 function Page() {
   return (
@@ -12,8 +14,11 @@ function Page() {
       <Header />
       <Biography />
       <LinkButtonContainer>
-        <LinkButton />
+        {linkBtnData.map((data: ILinkBtnData, idx: number) => (
+          <LinkButton btnData={data} key={idx} />
+        ))}
       </LinkButtonContainer>
+      <Copyright />
     </PageContainer>
   );
 }

@@ -2,25 +2,49 @@
 
 import React from "react";
 import styled from "styled-components";
-import ShortcutWhiteIcon from "../assets/icons/shortcut_white.svg";
-import NaverBlogLogo from "../assets/icons/naver_blog_logo.svg";
-import Image from "next/image";
+import ShortcutButton from "./ShortcutButton";
+import ButtonTag from "./ButtonTag";
 
-function LinkButton() {
+function LinkButton(props: ILinkBtnData) {
+  const {
+    is_btn_active,
+    image_source,
+    image_alt,
+    button_title,
+    button_text,
+    is_tag_active,
+    is_link_shortcut_active,
+    tag_text,
+    link_url,
+    button_background,
+    tag_background,
+  } = props.btnData;
+
+  const handleButtonClick = () => {
+    const newWindow = window.open(link_url, "_blank", "noopener,noreferrer");
+    if (newWindow) {
+      newWindow.opener = null;
+    } // 보안 강화
+  };
+
   return (
-    <LinkButtonContainer>
+    <LinkButtonContainer
+      buttonBackground={button_background}
+      onClick={handleButtonClick}
+      isBtnActive={is_btn_active}
+    >
       <LogoAndTagWrapper>
-        <Image src={NaverBlogLogo} alt="button link logo" />
-        <TagContainer>추후 오픈 예정</TagContainer>
+        <img src={image_source} alt={image_alt} />
+        {is_tag_active && <ButtonTag tagData={{ tag_text, tag_background }} />}
       </LogoAndTagWrapper>
       <ContentAndShortcutsWrapper>
         <ButtonContentWrapper>
-          <ButtonTitle>주인장 네이버 블로그 방문하기</ButtonTitle>
-          <ButtonTitleText>포스트 글 더 쓰고 오픈할 예정..</ButtonTitleText>
+          <ButtonTitle isBtnActive={is_btn_active}>{button_title}</ButtonTitle>
+          <ButtonTitleText isBtnActive={is_btn_active}>
+            {button_text}
+          </ButtonTitleText>
         </ButtonContentWrapper>
-        <ShortcutButton>
-          <Image src={ShortcutWhiteIcon} alt="shorcut icon" />
-        </ShortcutButton>
+        {is_link_shortcut_active && <ShortcutButton />}
       </ContentAndShortcutsWrapper>
     </LinkButtonContainer>
   );
@@ -28,13 +52,18 @@ function LinkButton() {
 
 export default LinkButton;
 
-const LinkButtonContainer = styled.div`
+const LinkButtonContainer = styled.div<{
+  isBtnActive: boolean;
+  buttonBackground: string;
+}>`
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 12px;
   border-radius: 10px;
-  background: #fafafa;
+  background: ${(props) =>
+    props.isBtnActive ? props.buttonBackground : "#FAFAFA"};
+  cursor: ${(props) => (props.isBtnActive ? "pointer" : "not-allowed")};
 `;
 
 const LogoAndTagWrapper = styled.div`
@@ -42,22 +71,6 @@ const LogoAndTagWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   align-self: stretch;
-`;
-
-const TagContainer = styled.div`
-  display: flex;
-  padding: 4px 6px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  color: #73787e;
-  font-family: Pretendard;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  border-radius: 5px;
-  background: #e9ebed;
 `;
 
 const ContentAndShortcutsWrapper = styled.div`
@@ -74,31 +87,27 @@ const ButtonContentWrapper = styled.div`
   gap: 4px;
 `;
 
-const ButtonTitle = styled.p`
+const ButtonTitle = styled.p<{
+  isBtnActive: boolean;
+}>`
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.64px;
+  color: ${(props) => (props.isBtnActive ? "#ffffff" : "#73787e")};
 `;
 
-const ButtonTitleText = styled.p`
+const ButtonTitleText = styled.p<{
+  isBtnActive: boolean;
+}>`
   font-family: Pretendard;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.48px;
-`;
-
-const ShortcutButton = styled.div`
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  display: flex;
-  width: 30px;
-  height: 30px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+  color: ${(props) =>
+    props.isBtnActive ? "rgba(255, 255, 255, 0.80)" : "#73787e"};
 `;
