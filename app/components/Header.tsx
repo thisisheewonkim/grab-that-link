@@ -3,12 +3,17 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import HelloNabangLogo from "../assets/icons/hellonabang_logo.svg";
 
 function Header() {
   return (
     <PageHeader>
-      <Image src={HelloNabangLogo} alt="hello, nabang logo" />
+      <Image
+        src={"/assets/icons/hellonabang_logo.svg"}
+        alt="hello, nabang logo"
+        width={36}
+        height={24}
+        priority
+      />
     </PageHeader>
   );
 }
@@ -17,5 +22,5 @@ export default Header;
 
 const PageHeader = styled.header`
   width: 100%;
-  padding: 20px 16px;
+  padding: 20px;
 `;

@@ -4,18 +4,25 @@ import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import PinguImg from "../assets/images/pingu.webp";
+import { typhography_theme } from "../style/typhography";
 
 function Biography() {
   return (
     <BioContainer>
       <BioTextContent>
-        <BioTitle>안녕하세요, 김희원입니다 👋 </BioTitle>
-        <BioText>
+        <Title>안녕하세요, 김희원입니다 👋 </Title>
+        <Body>
           데굴데굴 굴러가는 IxxJ 인간이 <br />
           직접 코드 쳐서 휘뚜루마뚜루 만들었어요.
-        </BioText>
+        </Body>
       </BioTextContent>
-      <ProfileImage src={PinguImg} alt="profile image" />
+      <Image
+        src={PinguImg}
+        alt="profile image"
+        priority
+        width={80}
+        height={80}
+      />
     </BioContainer>
   );
 }
@@ -37,28 +44,12 @@ const BioTextContent = styled.main`
   gap: 10px;
 `;
 
-const BioTitle = styled.h1`
+const Title = styled.h1`
+  ${typhography_theme.title};
   color: #1b1d1f;
-  font-family: Pretendard;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%; /* 30px */
-  letter-spacing: -0.8px;
 `;
 
-const BioText = styled.p`
+const Body = styled.p`
+  ${typhography_theme.body};
   color: #464c52;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 24px */
-  letter-spacing: -0.64px;
-`;
-
-const ProfileImage = styled(Image)`
-  width: 80px;
-  height: 80px;
-  flex-shrink: 0;
 `;

@@ -2,10 +2,10 @@
 
 import React from "react";
 import styled from "styled-components";
-import ShortcutButton from "./ShortcutButton";
 import ButtonTag from "./ButtonTag";
+import ShortcutButton from "./ShortcutButton";
 
-function LinkButton(props: ILinkBtnData) {
+function LinkButton({ btnData }: ILinkBtnData) {
   const {
     is_btn_active,
     image_source,
@@ -18,20 +18,20 @@ function LinkButton(props: ILinkBtnData) {
     link_url,
     button_background,
     tag_background,
-  } = props.btnData;
+  } = btnData;
 
   const handleButtonClick = () => {
+    if (!is_btn_active) return; // 버튼 비활성화 시 클릭 무효화
+    console.log(link_url);
     const newWindow = window.open(link_url, "_blank", "noopener,noreferrer");
-    if (newWindow) {
-      newWindow.opener = null;
-    } // 보안 강화
+    if (newWindow) newWindow.opener = null; // 보안 강화
   };
 
   return (
     <LinkButtonContainer
+      isBtnActive={is_btn_active}
       buttonBackground={button_background}
       onClick={handleButtonClick}
-      isBtnActive={is_btn_active}
     >
       <LogoAndTagWrapper>
         <img src={image_source} alt={image_alt} />

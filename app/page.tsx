@@ -29,11 +29,12 @@ const PageContainer = styled.div`
   max-width: 600px;
   width: 100%;
   margin: auto;
+  overflow-x: hidden;
 `;
 
 const LinkButtonContainer = styled.section`
-  padding: 20px 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 `;

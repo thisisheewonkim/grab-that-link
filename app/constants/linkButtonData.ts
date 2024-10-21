@@ -7,7 +7,7 @@ const naverBlogData: ILinkBtnData = {
   is_tag_active: true,
   is_link_shortcut_active: false,
   tag_text: "추후 오픈 예정",
-  link_url: "string",
+  link_url: process.env.NEXT_PUBLIC_NAVER_BLOG_URL,
 };
 
 const githubData: ILinkBtnData = {
@@ -19,7 +19,7 @@ const githubData: ILinkBtnData = {
   is_tag_active: false,
   is_link_shortcut_active: true,
   tag_text: "추후 오픈 예정",
-  link_url: "string",
+  link_url: process.env.NEXT_PUBLIC_GITHUB_URL,
   button_background: "#191919",
 };
 
@@ -32,7 +32,7 @@ const uxBlogData: ILinkBtnData = {
   is_tag_active: true,
   is_link_shortcut_active: false,
   tag_text: "추후 오픈 예정",
-  link_url: "string",
+  link_url: process.env.NEXT_PUBLIC_UX_BLOG_URL,
 };
 
 const channelTalkData: ILinkBtnData = {
@@ -57,7 +57,7 @@ const devLogData: ILinkBtnData = {
   is_tag_active: true,
   is_link_shortcut_active: true,
   tag_text: "추후 오픈 예정",
-  link_url: "string",
+  link_url: process.env.NEXT_PUBLIC_DEV_LOG_URL,
   button_background: "#2D9CDB",
 };
 

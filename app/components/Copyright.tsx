@@ -2,6 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
+import { typhography_theme } from "../style/typhography";
 
 function Copyright() {
   return <TextContainer>© IAMHEEWONKIM ALL RIGHTS RESERVED</TextContainer>;
@@ -9,7 +10,7 @@ function Copyright() {
 
 export default Copyright;
 
-const TextContainer = styled.div`
+const TextContainer = styled.footer`
   margin-top: 24px;
   width: 100%;
   display: flex;
@@ -17,10 +18,5 @@ const TextContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: #464c52;
-  font-family: Pretendard;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.48px;
+  ${typhography_theme.copyright};
 `;

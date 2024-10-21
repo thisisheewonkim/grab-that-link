@@ -2,13 +2,18 @@
 
 import React from "react";
 import styled from "styled-components";
-import ShortcutWhiteIcon from "../assets/icons/shortcut_white.svg";
 import Image from "next/image";
 
 function ShortcutButton() {
   return (
     <ButtonContainer>
-      <Image src={ShortcutWhiteIcon} alt="shorcut icon" />
+      <Image
+        src={"/assets/icons/shortcut_white.svg"}
+        alt="shortcut icon"
+        width={10}
+        height={10}
+        priority
+      />
     </ButtonContainer>
   );
 }
@@ -23,5 +28,4 @@ const ButtonContainer = styled.div`
   height: 30px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
 `;
