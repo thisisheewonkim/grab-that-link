@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import PinguImg from "../assets/images/pingu.webp";
 import { typhography_theme } from "../style/typhography";
 
 function Biography() {
@@ -17,7 +16,7 @@ function Biography() {
         </Body>
       </BioTextContent>
       <Image
-        src={PinguImg}
+        src={"/assets/images/pingu.webp"}
         alt="profile image"
         priority
         width={80}

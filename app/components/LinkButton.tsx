@@ -22,7 +22,6 @@ function LinkButton({ btnData }: ILinkBtnData) {
 
   const handleButtonClick = () => {
     if (!is_btn_active) return; // 버튼 비활성화 시 클릭 무효화
-    console.log(link_url);
     const newWindow = window.open(link_url, "_blank", "noopener,noreferrer");
     if (newWindow) newWindow.opener = null; // 보안 강화
   };

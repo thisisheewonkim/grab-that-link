@@ -44,7 +44,7 @@ const channelTalkData: ILinkBtnData = {
   is_tag_active: true,
   is_link_shortcut_active: true,
   tag_text: "추후 오픈 예정",
-  link_url: "string",
+  link_url: process.env.NEXT_PUBLIC_CHANNEL_URL,
   button_background: "#5E2AFF",
 };
 
